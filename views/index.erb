@@ -1,0 +1,21 @@
+<h1>Employee Tracker</h1>
+<p>Here are all your employees:</p>
+
+
+<div class="container">
+  <a href="/employees/new">Create New Employee</a>
+</div>
+
+<div class="container">
+  <a href="/divisions/new">Create New Division</a>
+</div>
+
+<h4>Your Divisions</h4>
+<% @divisions.each() do |division| %>
+    <li><%= division.name %> <a href="/divisions/<%= division.name() %>/edit">Update this division's name</a></li>
+  <% end %>
+
+<h4>Your Employees</h4>
+<% @employees.each() do |employee| %>
+    <li><%= employee.name %> <a href="/employees/<%= employee.id() %>/edit">Update this employee's name</a></li>
+  <% end %>

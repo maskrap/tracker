@@ -7,6 +7,7 @@ require("./lib/division")
 require("pg")
 
 get("/") do
+  @divisions = Division.all()
   @employees = Employee.all()
   erb(:index)
 end
@@ -18,6 +19,10 @@ end
 
 get('/employees/new') do
   erb(:employee_form)
+end
+
+get('/divisions/new') do
+  erb(:division_form)
 end
 
 post('/employees') do
@@ -38,7 +43,7 @@ get('/employees/:id/edit') do
 end
 
 patch('/employees/:id') do
-  name = params.fetch('description')
+  name = params.fetch('division_id')
   @employee = Employee.find(params.fetch('id').to_i())
   @employee.update({:name => name})
   @employees = Employee.all()
