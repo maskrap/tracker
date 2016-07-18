@@ -17,6 +17,11 @@ get('/employees') do
   erb(:employees)
 end
 
+get('/divisions') do
+  @divisions = Division.all()
+  erb(:divisions)
+end
+
 get('/employees/new') do
   erb(:employee_form)
 end
@@ -26,6 +31,17 @@ get('/divisions/new') do
 end
 
 post('/employees') do
+  @divisions = Division.all()
+  name = params.fetch('name')
+  @division = Division.new({:name => name})
+  @division.save()
+end
+
+post('/divisions') do
+  @divisions = Division.all()
+  name = params.fetch('name')
+  @division = Division.new({:name => name})
+  @division.save()
   @employees = Employee.all()
   name = params.fetch('name')
   @employee = Employee.new({:name => name})

@@ -1,0 +1,25 @@
+<h1>Your Current Divisions</h1>
+
+<% if @employees.any?() %>
+  <h3>Here are your divisions:</h3>
+
+  <ul>
+    <% @employees.not_done().each do |employee| %>
+      <li><%= employee.name %></li>
+    <% end %>
+  </ul>
+<hr>
+  <ul>
+    <% @employees.each() do |employee| %>
+    <li><%= employee.name %> <a href="/employees/<%= employee.division_id() %>/edit">Update this employee's name</a></li>
+    <% end %>
+  </ul>
+
+<% else %>
+
+    <p>There are no employees yet!</p>
+
+<% end %>
+
+<a href="/employees/new">Create a new employee</a>
+<a href="/">home</a>
